@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <h2>Welcome, {{user.first_name}}!</h2>
+                <h3>{{people_poking}} people have poked you so far!</h3>
+                <a href="{% url 'login:logout' %}">Logout</a>
+            </div>
+            <div class="main_content">
+                <div class="poked">
+                    {% for poke in poked %}
+                        <p>
+                            {% for user in all_users %}
+                                {% if user.id == poke.person_poking %}
+                                    {{user.first_name}}
+                                {% endif %}
+                            {% endfor %}
+                            poked you {{poke.num_poked}} times.
+                        </p>
+                    {% endfor %}
+                </div>
+                <div class="poke_others">
+                    <h3>People you may want to poke:</h3>
+                    <table>
+                        <tr class="table_headers">
+                            <th id = "table_header_name" class = "table_column_name">Name</th>
+                            <th id = "table_header_alias" class = "table_column_alias">Alias</th>
+                            <th id = "table_header_email" class = "table_column_email">Email Address</th>
+                            <th id = "table_header_poked" class = "table_column_poked">Poke History</th>
+                            <th id = "table_header_actions" class = "table_column_actions">Action</th>
+                        </tr> <!-- end of tabe_headers -->
+                        {% for user in all_users %}
+                            <tr>
+                                <td class = "table_column_name">{{user.first_name}} {{user.last_name}}</td>
+                                <td class = "table_column_alias">{{user.alias}}</td>
+                                <td class = "table_column_email">{{user.email}}</td>
+                                <td class = "table_column_poked">
+                                    {% for poke in all_pokes %}
+                                        {% if poke.being_poked == user.id %}
+                                            {{poke.all_poked}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td class = "table_column_course_actions">
+                                    <form class="" action="{% url 'poke:poke' pokee_id=user.id%}" method="post">
+                                        {% csrf_token %}
+                                        <input type="submit" value="Poke!">
+                                    </form>
+                                    <!-- <a href="#"> Poke </a> -->
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

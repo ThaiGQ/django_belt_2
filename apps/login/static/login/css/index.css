@@ -1,0 +1,83 @@
+/*Ekapob Ukritnukun*/
+/*ThaiGQ@gmail.com*/
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+    #wrapper
+    {
+        /*outline: 1px solid red;*/
+        width: 800px;
+        margin: 100px auto;
+        padding: 25px;
+    }
+
+    #main_content
+    {
+        outline: 1px solid black;
+        /*height: 260px;
+        width: 370px;*/
+        padding: 20px;
+    }
+
+        #main_content h1
+        {
+            /*outline: 1px solid red;*/
+        }
+
+        #registration_form
+        {
+            /*outline: 1px solid green;*/
+            display: inline-block;
+            padding: 10px 0px;
+        }
+
+            #registration_form h3
+            {
+                /*outline: 1px solid red;*/
+            }
+
+            form
+            {
+                /*outline: 1px solid red;*/
+            }
+                .input_name
+                {
+                    /*outline: 1px solid purple;*/
+                    width: 340px;
+                    display: flex;
+                }
+                    .input_name label
+                    {
+                        /*outline: 1px solid red;*/
+                        display: flex;
+                        align-items: center;
+                        padding: 2px 0px;
+                    }
+                    .input_name input
+                    {
+                        /*outline: 1px solid red;*/
+                        width: 200px;
+                        display: inline-block;
+                        vertical-align: top;
+                    }
+                    .input
+                    {
+                        /*outline: 1px solid red;*/
+                        height: 25px;
+                        width: 200px;
+                        display: block;
+                        margin-right: 0px;
+                        margin-left: auto;
+                        padding: 2px 0px;
+                    }
+        #login_form
+        {
+            /*outline: 1px solid green;*/
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px 30px;
+        }

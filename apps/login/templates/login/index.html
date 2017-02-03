@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'login/css/index.css' %}">
+    </head>
+    <body>
+        <div id = "wrapper">
+            <div id="header">
+            </div>
+            <div id = "main_content">
+                <h1>Welcome, Ninja Master!</h1>
+                <div id = "registration_form">
+                    <h3> New Ninja Registration </h3>
+                    <form action = "{% url 'login:registration' %}" method = "post">
+                        {% csrf_token %}
+                        <div class = "input_name">
+                            <label> First Name: </label>
+                            <input class = "input" type = "text" name = "first_name" placeholder = "First Name of Ninja Master">
+                        </div> <!-- end of First Name entry field -->
+                        <div class = "input_name">
+                            <label> Last Name: </label>
+                            <input class = "input" type = "text" name = "last_name" placeholder = "Family Name of Ninja Master">
+                        </div> <!-- end of Last Name entry field -->
+                        <div class = "input_name">
+                            <label> Alias: </label>
+                            <input class = "input" type = "text" name = "alias" placeholder = "What respectable ninja posts their real name?!">
+                        </div> <!-- end of Alias entry field -->
+                        <div class = "input_name">
+                            <label> Email: </label>
+                            <input class = "input" type = "text" name = "email" placeholder = "Email of Ninja Master">
+                        </div> <!-- end of Email entry field -->
+                        <div class = "input_name">
+                            <label> Password: </label>
+                            <input class = "input" type = "password" name = "password" placeholder = "Enter Secret Password">
+                        </div> <!-- end of Password entry field -->
+                        <div class = "input_name">
+                            <label> Confirm Password: </label>
+                            <input class = "input" type = "password" name = "confirm_password" placeholder = "Confirm Secret Password">
+                        </div> <!-- end of Password Confirmation entry field -->
+                        <div class = "input_name">
+                            <label> Date of Birth: </label>
+                            <input class = "input" type = "date" name = "dob">
+                        </div> <!-- end of Password Confirmation entry field -->
+                        <input class = "submit_button" type = "submit" value = "Register Ninja">
+                    </form>
+                </div> <!-- end of Registration Form -->
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <div id = "login_form">
+                    <h3> Returning Ninja Masters </h3>
+                    <form action = "{% url 'login:login' %}" method = "post">
+                        {% csrf_token %}
+                        <div class = "input_name">
+                            <label> Email: </label>
+                            <input class = "input" type = "text" name = "email" placeholder = "Email of Ninja Master">
+                        </div> <!-- end of Email entry field -->
+                        <div class = "input_name">
+                            <label> Password: </label>
+                            <input class = "input" type = "password" name = "password" placeholder = "Enter Secret Password">
+                        </div> <!-- end of Password entry field -->
+                        <input class = "submit_button" type = "submit" value = "Login">
+                    </form>
+                </div> <!-- end of login Form -->
+            </div> <!-- end of main_content -->
+        </div> <!-- end of wrapper -->
+    </body>
+</html>
